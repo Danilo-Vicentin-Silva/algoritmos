@@ -1692,3 +1692,251 @@ fimfuncao
 // propor uma solução para executar as operações possíveis variando apenas o número de linhas e 
 // colunas no início das repetiçõe
 
+algoritmo verificar_multiplicacao_matriz
+
+var
+   A, B, C, D: matriz[1..5, 1..5] de inteiro
+   i, j, k: inteiro
+   possivel: boolean
+
+inicio
+   // Ler as matrizes
+   escreva("Informe os valores da matriz A:")
+   para i de 1 ate 5 faca
+      para j de 1 ate 5 faca
+         escreva("Informe o valor da matriz A na posição (", i, ", ", j, "): ")
+         leia(A[i, j])
+      fim para
+   fim para
+
+   escreva("Informe os valores da matriz B:")
+   para i de 1 ate 5 faca
+      para j de 1 ate 3 faca
+         escreva("Informe o valor da matriz B na posição (", i, ", ", j, "): ")
+         leia(B[i, j])
+      fim para
+   fim para
+
+   escreva("Informe os valores da matriz C:")
+   para i de 1 ate 3 faca
+      para j de 1 ate 5 faca
+         escreva("Informe o valor da matriz C na posição (", i, ", ", j, "): ")
+         leia(C[i, j])
+      fim para
+   fim para
+
+   escreva("Informe os valores da matriz D:")
+   para i de 1 ate 5 faca
+      para j de 1 ate 5 faca
+         escreva("Informe o valor da matriz D na posição (", i, ", ", j, "): ")
+         leia(D[i, j])
+      fim para
+   fim para
+
+   // Verificar se as operações são possíveis
+   escreva("\nVerificando se as operações são possíveis:\n")
+   escreva("A * B: ")
+   possivel <- verificar_multiplicacao(A, B)
+   escreva(possivel, "\n")
+
+   escreva("A * C: ")
+   possivel <- verificar_multiplicacao(A, C)
+   escreva(possivel, "\n")
+
+   escreva("A * D: ")
+   possivel <- verificar_multiplicacao(A, D)
+   escreva(possivel, "\n")
+
+   escreva("B * A: ")
+   possivel <- verificar_multiplicacao(B, A)
+   escreva(possivel, "\n")
+
+   escreva("B * B: ")
+   possivel <- verificar_multiplicacao(B, B)
+   escreva(possivel, "\n")
+
+   escreva("C * D: ")
+   possivel <- verificar_multiplicacao(C, D)
+   escreva(possivel, "\n")
+
+   escreva("C * C: ")
+   possivel <- verificar_multiplicacao(C, C)
+   escreva(possivel, "\n")
+
+fimalgoritmo
+
+// Função para verificar se a multiplicação é possível
+funcao verificar_multiplicacao(matriz1, matriz2)
+   var
+      linhas1, colunas1, linhas2, colunas2: inteiro
+      possivel: boolean
+   inicio
+      linhas1 <- dimensao(matriz1, 1)
+      colunas1 <- dimensao(matriz1, 2)
+      linhas2 <- dimensao(matriz2, 1)
+      colunas2 <- dimensao(matriz2, 2)
+
+      possivel <- (colunas1 = linhas2)
+
+      retorna possivel
+   fimfuncao
+
+// 6) dado o vetor1 [ 3 8 6 4 7 12 11 9 10 5 2 1] 
+// desenvolver um algoritmo que separe em um vetor com os números impares e outro com os números 
+// pares
+// some os dois vetores
+
+algoritmo separar_pares_impares_e_somar
+
+var
+   vetor1, vetor_pares, vetor_impares: vetor[1..12] de inteiro
+   i, j, soma_pares, soma_impares: inteiro
+
+inicio
+   // Inicializar vetores e variáveis
+   vetor1 <- [3, 8, 6, 4, 7, 12, 11, 9, 10, 5, 2, 1]
+   para i de 1 ate 12 faca
+      vetor_pares[i] <- 0
+      vetor_impares[i] <- 0
+   fim para
+   soma_pares <- 0
+   soma_impares <- 0
+   j <- 1
+
+   // Separar em vetores de pares e ímpares
+   para i de 1 ate 12 faca
+      se vetor1[i] % 2 = 0 entao
+         vetor_pares[j] <- vetor1[i]
+         soma_pares <- soma_pares + vetor1[i]
+         j <- j + 1
+      senao
+         vetor_impares[i] <- vetor1[i]
+         soma_impares <- soma_impares + vetor1[i]
+      fim se
+   fim para
+
+   // Exibir vetores de pares e ímpares
+   escreva("Vetor de pares: ")
+   para i de 1 ate 12 faca
+      se vetor_pares[i] <> 0 entao
+         escreva(vetor_pares[i], " ")
+      fim se
+   fim para
+   escreva("\n")
+
+   escreva("Vetor de ímpares: ")
+   para i de 1 ate 12 faca
+      se vetor_impares[i] <> 0 entao
+         escreva(vetor_impares[i], " ")
+      fim se
+   fim para
+   escreva("\n")
+
+   // Somar vetores de pares e ímpares
+   escreva("Soma dos números pares: ", soma_pares, "\n")
+   escreva("Soma dos números ímpares: ", soma_impares, "\n")
+   escreva("Soma total: ", soma_pares + soma_impares, "\n")
+
+fimalgoritmo
+
+// 7) dado o vetor [1 2 3 4 5]
+// usar o algoritmo desenvolvido para contar quantos passos seriam necessários para colocar 
+// este vetor em rdem decrescente
+
+// Resposta: Para contar quantos passos seriam necessários para colocar o vetor [1, 2, 3, 4, 5] 
+// em ordem decrescente usando o algoritmo desenvolvido anteriormente, você pode modificar o vetor
+// de entrada para [5, 4, 3, 2, 1] e executar o algoritmo.
+// O algoritmo anterior separa os números pares e ímpares, e soma os dois vetores. Para determinar 
+// quantos passos seriam necessários para colocar o vetor em ordem decrescente, você precisaria 
+// de um algoritmo de ordenação, como o algoritmo de ordenação por bolha, por exemplo.
+
+// Dados um vetor, duas matrizes e um número inteiro, que devem ser inseridos por um usuário, desenvolver um 
+// algoritmo que:
+// 1) leia duas matrizes Amxn e Brxm 
+// 2) leia um vetor cn
+// 3) mostre ao usuário quais as possíveis relações entre n, r e m para que as operações: 
+// adição, subtração e multplicação
+// 4) a partir de uma escolha após o item 4, o usuário deve entrar com n, r e m, as matrizes, o vetor
+// 5) verificar se n, r e m são entradas possíveis para o item 6
+// 6) realizar A*B, B*A, A*A, B*B, quando possível, justificando a impossibilidade
+// 7) realizar c*A, c*B, idem ao item anterior
+//  procure desenvolver um código único para realizar as operações aritméticas
+
+algoritmo "OperacoesMatrizesVetor"
+var
+  A: matriz[1..m,1..n] de inteiro
+  B: matriz[1..r,1..m] de inteiro
+  C: vetor[1..n] de inteiro
+  n, m, r: inteiro
+  i, j, k: inteiro
+  AB: matriz[1..r,1..n] de inteiro
+  BA: matriz[1..m,1..m] de inteiro
+  AA: matriz[1..m,1..n] de inteiro
+  BB: matriz[1..r,1..m] de inteiro
+  cA: matriz[1..m,1..n] de inteiro
+  cB: matriz[1..r,1..m] de inteiro
+inicio
+  escreva("Insira as dimensões de A (m por n): ")
+  leia(m, n)
+  escreva("Insira os elementos da matriz A: ")
+  para i de 1 ate m faca
+    para j de 1 ate n faca
+      leia(A[i,j])
+    fimpara
+  fimpara
+  
+  escreva("Insira as dimensões de B (r por m): ")
+  leia(r, m)
+  escreva("Insira os elementos da matriz B: ")
+  para i de 1 ate r faca
+    para j de 1 ate m faca
+      leia(B[i,j])
+    fimpara
+  fimpara
+  
+  escreva("Insira os elementos do vetor C (tamanho n): ")
+  para i de 1 ate n faca
+    leia(C[i])
+  fimpara
+  
+  escreva("Para adição e subtração, as matrizes devem ter as mesmas dimensões.")
+  escreva("Para multiplicação, o número de colunas de A deve ser igual ao número de linhas de B.")
+  
+  se (n = m) e (m = r) entao
+    escreva("As operações de adição e subtração são possíveis.")
+  senao
+    escreva("As operações de adição e subtração não são possíveis.")
+  fimse
+  
+  se (n = r) entao
+    escreva("A multiplicação é possível.")
+  senao
+    escreva("A multiplicação não é possível.")
+  fimse
+  
+  se (n = r) entao
+    para i de 1 ate r faca
+      para j de 1 ate n faca
+        AB[i,j] := 0
+        para k de 1 ate m faca
+          AB[i,j] := AB[i,j] + A[i,k] * B[k,j]
+        fimpara
+      fimpara
+    fimpara
+    escreva("Multiplicação A*B realizada.")
+  senao
+    escreva("Multiplicação A*B não é possível, pois n ≠ r.")
+  fimse
+
+  se (n = m) entao
+    para i de 1 ate m faca
+      para j de 1 ate n faca
+        cA[i,j] := C[i] * A[i,j]
+      fimpara
+    fimpara
+    escreva("Multiplicação c*A realizada.")
+  senao
+    escreva("Multiplicação c*A não é possível, pois n ≠ m.")
+  fimse
+fim
+
